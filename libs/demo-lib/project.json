@@ -1,0 +1,28 @@
+{
+  "name": "demo-lib",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/demo-lib/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/demo-lib",
+        "tsConfig": "libs/demo-lib/tsconfig.lib.json",
+        "project": "libs/demo-lib/package.json",
+        "entryFile": "libs/demo-lib/src/index.ts",
+        "external": ["react/jsx-runtime", "react-native", "react", "react-dom"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "assets": [
+          {
+            "glob": "libs/demo-lib/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}
